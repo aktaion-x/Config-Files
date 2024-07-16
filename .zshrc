@@ -14,17 +14,14 @@
 #    bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 #fi
 
-##plugins=(
-##zsh-autosuggestions
-##git
-##sudo
-##)
+plugins=(
+zsh-autosuggestions
+git
+sudo
+)
 
 # Path to your oh-my-zsh installation.
-
-##export ZSH="$HOME/.oh-my-zsh"
-
-
+export ZSH="$HOME/.oh-my-zsh"
 # number + gg: will take you to the line
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -94,7 +91,7 @@
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git)
 
-##source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -142,7 +139,7 @@
 #bindkey '\e[B' history-search-forward
 
 # source .oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-##source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 
 
@@ -155,7 +152,7 @@ alias ".."="cd .."
 alias cls="clear"
 alias c='clear'
 #alias vim="nvim"
-alias ping='ping -c 5'
+#alias ping='ping -c 5'
 alias sys="systemctl"
 alias ssys="sudo systemctl"
 alias "ip.me"="curl ip.me"
@@ -227,7 +224,7 @@ alias toggleprompt='toggle_prompt'
 
 #neofetch
 
-##WIN_USER='/mnt/c/Users/gkara'
+WIN_USER='/mnt/c/Users/gkara'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -250,3 +247,12 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 export LESS='-R'
 export LESSOPEN='|pygmentize -g %s'
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#666666'
+
+# add the ssh agent
+# Check if SSH agent is already running
+if [ -z "$SSH_AGENT_PID" ]; then
+    # Start the SSH agent
+    eval $(ssh-agent -s)
+fi
+# add ssh key
+eval `ssh-add ~/.ssh/id_ed25519_aktaion_x_github`
